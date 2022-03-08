@@ -1,28 +1,13 @@
     async function getPhotographers() {
         // TODO : Replace with data from the JSON file
-        const photographers = [
-            {
-                "name": "My test data",
-                "id": 1,
-                "city": "London",
-                "country": "UK",
-                "tagline": "This is my test data",
-                "price": 400,
-                "portrait": "account.png"
-            },
-            {
-                "name": "Other test data",
-                "id": 2,
-                "city": "Londres",
-                "country": "UK",
-                "tagline": "This is my other test data",
-                "price": 500,
-                "portrait": "account.png"
-            },
-        ]
+        let photographers = [];
+        await fetch ('http://localhost:5501/data/photographers.json')
+        .then(res => res.json())
+        .then(data => photographers = data.photographers)
+        console.log(photographers);
         // Return photographer array only once
         return ({
-            photographers: [...photographers, ...photographers, ...photographers]})
+            photographers: [...photographers]})
     }
 
     async function displayData(photographers) {
