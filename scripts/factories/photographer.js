@@ -1,5 +1,5 @@
 function photographerFactory(data) {
-    const { name, portrait, city, tagline, price } = data;
+    const {name, id, portrait, city, tagline, price} = data;
 
     const picture = `assets/photographers/${portrait}`;
 
@@ -7,6 +7,7 @@ function photographerFactory(data) {
         const article = document.createElement( 'article' );
         const img = document.createElement( 'img' );
         img.setAttribute("src", picture)
+        img.setAttribute("onclick", "document.location.href='/photographer.html?id="+id+"'")
         const h2 = document.createElement( 'h2' );
         h2.textContent = name;
         const p_city = document.createElement( 'p' );
@@ -34,5 +35,27 @@ function photographerFactory(data) {
         
         return (article);
     }
-    return { name, picture, city, tagline, price, getUserCardDOM }
+    function getUserPageDOM() {
+        const article = document.createElement( 'article' );
+        const img = document.createElement( 'img' );
+        img.setAttribute("src", picture)
+        const h2 = document.createElement( 'h2' );
+        h2.textContent = name;
+        const p_city = document.createElement( 'p' );
+        p_city.textContent = city;
+        const p_tag = document.createElement( 'p' );
+        p_tag.textContent = tagline;
+        const p_price = document.createElement( 'p' );
+        p_price.textContent = price;
+        article.appendChild(img);
+        article.appendChild(h2);
+        article.appendChild(p_city);
+        article.appendChild(p_tag);
+        article.appendChild(p_price);
+
+        return (article);
+    }
+
+
+    return {name, id, picture, city, tagline, price, getUserCardDOM, getUserPageDOM}
 }

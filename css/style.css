@@ -70,9 +70,16 @@ h1 {
     color: var(--secondary-color);
 }
 
+.media_section{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    align-content: center;
+    /* justify-items: center; */
+}
+
 .media_section article img{
     object-fit: cover;
-    max-width: 50px;
-    max-height: 50px;
-
+    border: 2px solid red;
+    max-width: 50%;
+    max-height: 10%px;
 }
