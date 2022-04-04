@@ -1,45 +1,50 @@
-async function getMedias() {
+async function getMedias(photographerId) {
     // TODO : Replace with data from the JSON file
-    const medias = [
-        {
-			"id": 52343416,
-			"photographerId": 195,
-			"title": "Japanese Tower, Kyoto",
-			"image": "Travel_Tower.jpg",
-			"likes": 25,
-			"date": "2019-04-03",
-			"price": 60
-		},
-		{
-			"id": 2523434,
-			"photographerId": 195,
-			"title": "Senset on Canals, Venice",
-			"image": "Travel_SunsetonCanals.jpg",
-			"likes": 53,
-			"date": "2019-05-06",
-			"price": 60
-		}
-    ]
+	// const url = "https://agpa-88.github.io/OC_JSR_P6_AA/data/photographers.json";
+	// const reponse = await fetch(url,{ method: "GET" }).json();
     // Return medias array only once
-    return ({
-        medias: [...medias]})
+
+	// async function getPhotographers() {
+	
+	// 	let photographers = [];
+	// 		await fetch ('https://agpa-88.github.io/OC_JSR_P6_AA/data/photographers.json')
+	// 		.then(res => res.json())
+	// 		.then(data => photographers = data.photographers)
+	// 		console.log(photographers);
+
+	// 	return ({
+	// 		photographers: [...photographers]})
+		
+	// };
+
+	let allMedias = [];
+        await fetch ('https://agpa-88.github.io/OC_JSR_P6_AA/data/photographers.json')
+        .then(res => res.json())
+        .then(data => allMedias = data.media)
+        console.log(allMedias);
+	const photographerMedia = {
+		medias: [...allMedias.filter(media => media.photographerId === parseInt(photographerId))]
+	};
+	console.log(photographerMedia);
+    return (photographerMedia);
 }
 
-async function displayData(medias) {
-    const mediasSection = document.querySelector(".media_section");
+async function displayMediaData(medias) {
+    const mediasSection = document.querySelector("#photographer_gallery");
 
     medias.forEach((media) => {
         const mediaModel = mediaFactory(media);
-        const userCardDOM = mediaModel.getUserCardDOM();
-        mediasSection.appendChild(userCardDOM);
+        const userGalleryDOM = mediaModel.getGalleryCardDOM();
+        mediasSection.appendChild(userGalleryDOM);
     });
 };
 
 async function init() {
-    // Retreive photographer data
-    const { medias } = await getMedias();
-    displayData(medias);
-
+    // Retreive photographer photos data
+	const id = document.location.href.split("=")[1];
+    const { medias } = await getMedias(id);
+    displayMediaData(medias);
+	console.log(medias)
 };
 
 init();

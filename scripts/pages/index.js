@@ -1,7 +1,7 @@
     async function getPhotographers() {
         // TODO : Replace with data from the JSON file
         let photographers = [];
-        await fetch ('http://localhost:5501/data/photographers.json')
+        await fetch ('https://agpa-88.github.io/OC_JSR_P6_AA/data/photographers.json')
         .then(res => res.json())
         .then(data => photographers = data.photographers)
         console.log(photographers);

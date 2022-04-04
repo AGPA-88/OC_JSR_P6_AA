@@ -1,17 +1,64 @@
 function mediaFactory(data) {
-    const { title, image } = data;
+    const { title, image, video, photographerId, likes, date, price } = data;
 
-    const picture = `assets/media/Marcel/${image}`;
+    // const picture = `assets/photographers/${portrait}`;
+    
+    function getGalleryCardDOM() {
+        console.log(title);
+        const gallery = document.createElement( 'div' );
 
-    function getUserCardDOM() {
-        const article = document.createElement( 'article' );
-        const img = document.createElement( 'img' );
-        img.setAttribute("src", picture)
+        if(video) {
+            const vidPath = `assets/media/${photographerId}/${video}`;
+
+            const vid = document.createElement( 'video' );
+            const vidSrc = document.createElement( 'source' );
+
+            vid.setAttribute("controls", true);
+            vidSrc.setAttribute("src", vidPath);
+            vidSrc.setAttribute("type", "video/mp4");
+
+            vid.appendChild(vidSrc);
+            gallery.appendChild(vid);
+
+        }else{
+            const picture = `assets/media/${photographerId}/${image}`;
+
+            const img = document.createElement( 'img' );
+            img.setAttribute("src", picture)
+            img.setAttribute("alt", title)
+            gallery.appendChild(img);
+        }
+
         const h2 = document.createElement( 'h2' );
         h2.textContent = title;
-        article.appendChild(img);
-        article.appendChild(h2);
-        return (article);
+        const p_likes = document.createElement( 'p' );
+        p_likes.textContent = likes;
+        gallery.appendChild(h2);
+        gallery.appendChild(p_likes);
+
+   
+
+
+        return (gallery);
     }
-    return { title, image, getUserCardDOM }
+
+    
+    // function getGalleryDom() {
+    //     const gallery = document.querySelector( '#photographer_gallery' );
+    //     const article = document.createElement( 'div' );
+    //     console.log(gallery);
+    //     const img = document.createElement( 'img' );
+    //     img.setAttribute("src", picture)
+    //     const h2 = document.createElement( 'h2' );
+    //     h2.textContent = title;
+
+    //     gallery.appendChild(img);
+    //     gallery.appendChild(h2);
+
+    //     return (gallery);
+
+    // }
+
+    return { title, image, photographerId, likes, date, price, getGalleryCardDOM }
 }
+
