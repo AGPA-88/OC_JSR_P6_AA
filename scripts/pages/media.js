@@ -32,9 +32,9 @@ async function getMedias(photographerId) {
 async function displayMediaData(medias) {
     const mediasSection = document.querySelector("#photographer_gallery");
 
-    medias.forEach((media) => {
+    medias.forEach((media, index) => {
         const mediaModel = mediaFactory(media);
-        const userGalleryDOM = mediaModel.getGalleryCardDOM();
+        const userGalleryDOM = mediaModel.getGalleryCardDOM(index);
         mediasSection.appendChild(userGalleryDOM);
     });
 };
@@ -44,7 +44,7 @@ async function init() {
 	const id = document.location.href.split("=")[1];
     const { medias } = await getMedias(id);
     displayMediaData(medias);
-	console.log(medias)
+	sessionStorage.setItem("medias", JSON.stringify(medias));
 };
 
 init();
