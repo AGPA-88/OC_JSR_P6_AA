@@ -13,6 +13,7 @@ previousBtn.addEventListener('click', previousMedia);
 nextBtn.addEventListener('click', nextMedia);
 
 function openLightbox(media, src, index) {
+    window.addEventListener("keydown",navigationGallery);
     indexMedia = index;
     let srcMediaFolders = src.split("/");
     srcMedia = '';
@@ -47,3 +48,14 @@ function nextMedia() {
     console.log(indexMedia)
 }
 
+function navigationGallery(event){
+    if(event.keyCode === 37){
+    previousMedia();
+    }
+    if(event.keyCode === 39){
+    nextMedia();
+    }
+    if(event.keyCode === 27){
+    closeLightbox();
+    }
+}
