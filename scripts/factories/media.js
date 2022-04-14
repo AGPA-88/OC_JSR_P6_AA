@@ -23,8 +23,8 @@ function mediaFactory(data) {
         }else{
             const picture = `assets/media/${photographerId}/${image}`;
             
-            gallery.setAttribute('onclick', 'openLightbox("image", "' + picture + '", '+ index +');');
             const img = document.createElement( 'img' );
+            img.setAttribute('onclick', 'openLightbox("image", "' + picture + '", '+ index +');');
             img.setAttribute("src", picture)
             img.setAttribute("alt", title)
             gallery.appendChild(img);
@@ -32,10 +32,24 @@ function mediaFactory(data) {
 
         const h2 = document.createElement( 'h2' );
         h2.textContent = title;
+
+
+        let likesCount = likes;
+
         const p_likes = document.createElement( 'p' );
         p_likes.textContent = likes;
+
+        const likeBtn = document.createElement( 'button' );
+        likeBtn.textContent = '<3';
+
+        likeBtn.addEventListener('click', () => {
+            likesCount++;
+            p_likes.innerText = likesCount
+        })
+
         gallery.appendChild(h2);
         gallery.appendChild(p_likes);
+        gallery.appendChild(likeBtn);
 
    
 

@@ -1,3 +1,7 @@
+
+.lightbox-open {
+    overflow: hidden;
+}
 #lightbox{
     display:none;
     z-index: 10;
@@ -26,15 +30,28 @@
     /* min-width: 100px;
     min-height: 100px; */
     display: flex;
-    justify-content: space-around;
-    align-items: center;
     /* max-width: 50%; */
     max-height: 80%;
 }
 #media img{
-    max-width: 70%;
-    max-height: 70%;
-    width: auto;
-    height: auto;
+    object-fit: contain;
+}
 
+#next_media, #previous_media {
+    position: absolute;
+    top: calc(50% - 33px);
+    /* left: 10px; */
+    font-size: 50px;
+    color: #fff;
+    cursor: pointer;
+    z-index: 999999;
+    background-color: rgba(0,0,0,.2);
+}
+
+#previous_media {
+    left: 10px;
+}
+
+#next_media {
+    right: 10px;
 }

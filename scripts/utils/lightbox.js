@@ -13,6 +13,7 @@ previousBtn.addEventListener('click', previousMedia);
 nextBtn.addEventListener('click', nextMedia);
 
 function openLightbox(media, src, index) {
+    document.body.classList.add('lightbox-open');
     window.addEventListener("keydown",navigationGallery);
     indexMedia = index;
     let srcMediaFolders = src.split("/");
@@ -23,29 +24,47 @@ function openLightbox(media, src, index) {
 
     if (media==="image"){
         mediaBox.innerHTML = '<img src="'+ src +'">'
+    }else{
+        mediaBox.innerHTML = `
+        <video controls="true" autoplay><source src="${src}" type="video/mp4"></video>
+        `
+
     }
     lightboxElement.style.display = "block";
 }
 function closeLightbox() {
     lightboxElement.style.display = "none";
+    document.body.classList.remove('lightbox-open');
 }
 
 function reloadLightbox() {
+    console.log({media: medias[indexMedia], indexMedia})
     if (medias[indexMedia].image) {
         openLightbox("image", srcMedia + medias[indexMedia].image, indexMedia);
+    }else{
+        openLightbox("video", srcMedia + medias[indexMedia].video, indexMedia);
     }
 }
 
 function previousMedia() {
-    indexMedia--;
+    console.log({medias:0, indexMedia: indexMedia})
+    if(indexMedia <= 0) {
+        indexMedia = medias.length -1;
+    }else{
+        indexMedia--;
+    }
+
     reloadLightbox();
-    console.log(indexMedia)
+
 }
 
 function nextMedia() {
-    indexMedia++;
+    if(medias.length === (indexMedia + 1)) {
+        indexMedia = 0;
+    }else{
+        indexMedia++;
+    }
     reloadLightbox();
-    console.log(indexMedia)
 }
 
 function navigationGallery(event){
