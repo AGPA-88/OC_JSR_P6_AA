@@ -4,7 +4,6 @@
         await fetch ('https://agpa-88.github.io/OC_JSR_P6_AA/data/photographers.json')
         .then(res => res.json())
         .then(data => photographers = data.photographers)
-        console.log(photographers);
         // Return photographer array only once
         return ({
             photographers: [...photographers]})
