@@ -38,8 +38,10 @@ function photographerFactory(data) {
     return article;
   }
   function getUserPageDOM() {
-    const toto = document.querySelector(".photographer_info");
-    console.log(toto);
+    const photographerPicture = document.querySelector('.photographer_picture');
+    const photographerInfo = document.querySelector('.photographer_info');
+
+
     let img = document.createElement("img");
     img.setAttribute("src", picture);
     let h2 = document.createElement("h2");
@@ -48,13 +50,12 @@ function photographerFactory(data) {
     p_city.textContent = city;
     let p_tag = document.createElement("p");
     p_tag.textContent = tagline;
+    photographerPicture.appendChild(img);
+    photographerInfo.appendChild(h2);
+    photographerInfo.appendChild(p_city);
+    photographerInfo.appendChild(p_tag);
 
-    toto.appendChild(img);
-    toto.appendChild(h2);
-    toto.appendChild(p_city);
-    toto.appendChild(p_tag);
-
-    return toto;
+    return photographerHeader;
   }
 
   return {

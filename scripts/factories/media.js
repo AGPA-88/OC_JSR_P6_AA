@@ -6,6 +6,7 @@ function mediaFactory(data) {
     function getGalleryCardDOM(index) {
         console.log(title);
         const gallery = document.createElement( 'div' );
+        gallery.setAttribute ( 'class', 'gallery_item' );
         
         if(video) {
             const vidPath = `assets/media/${photographerId}/${video}`;
@@ -29,27 +30,32 @@ function mediaFactory(data) {
             img.setAttribute("alt", title)
             gallery.appendChild(img);
         }
-
+        const mediaDescription = document.createElement ( 'div' );
+        mediaDescription.setAttribute ( 'class', 'media_description' );
         const h2 = document.createElement( 'h2' );
         h2.textContent = title;
 
-
         let likesCount = likes;
-
-        const p_likes = document.createElement( 'p' );
+        const likesContainer = document.createElement ( 'div' );
+        likesContainer.setAttribute ( 'class', 'likes_container' );
+        const p_likes = document.createElement( 'div' );
         p_likes.textContent = likes;
 
-        const likeBtn = document.createElement( 'button' );
-        likeBtn.textContent = '<3';
+        const likeBtn = document.createElement( 'div' );
+        // likeBtn.textContent = '<3';
+        likeBtn.innerHTML = '<i class="fa fa-heart" aria-hidden="true"></i>';
+
 
         likeBtn.addEventListener('click', () => {
             likesCount++;
             p_likes.innerText = likesCount
         })
 
-        gallery.appendChild(h2);
-        gallery.appendChild(p_likes);
-        gallery.appendChild(likeBtn);
+        gallery.appendChild(mediaDescription);
+        mediaDescription.appendChild(h2);
+        mediaDescription.appendChild(likesContainer);
+        likesContainer.appendChild(p_likes);
+        likesContainer.appendChild(likeBtn);
 
    
 
@@ -57,50 +63,5 @@ function mediaFactory(data) {
         return (gallery);
     }
 
-    
-    // function getGalleryDom() {
-    //     const gallery = document.querySelector( '#photographer_gallery' );
-    //     const article = document.createElement( 'div' );
-    //     console.log(gallery);
-    //     const img = document.createElement( 'img' );
-    //     img.setAttribute("src", picture)
-    //     const h2 = document.createElement( 'h2' );
-    //     h2.textContent = title;
-
-    //     gallery.appendChild(img);
-    //     gallery.appendChild(h2);
-
-    //     return (gallery);
-
-    // }
-
-//     <div id="myModal" class="modal">
-//       <span class="close cursor" onclick="closeModal()">&times;</span>
-//       <div class="modal-content"></div>
-//       <div class="mySlides">
-//         <div class="numbertext">1 / 4</div>
-//         <img src="img1_wide.jpg" style="width:100%"/>
-//       </div>
-//     </div>
-
-//     // Open the Modal
-// function openModal() {
-//   document.getElementById("myModal").style.display = "block";
-// }
-
-// // Close the Modal
-// function closeModal() {
-//   document.getElementById("myModal").style.display = "none";
-// }
-
-// var slideIndex = 1;
-// showSlides(slideIndex);
-
-// // Next/previous controls
-// function plusSlides(n) {
-//   showSlides(slideIndex += n);
-// }
-
     return { title, image, photographerId, likes, date, price, getGalleryCardDOM }
 }
-

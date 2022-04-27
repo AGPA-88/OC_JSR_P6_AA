@@ -40,10 +40,26 @@
     </section>
     <main id="main">
       <div class="photograph-header">
-        <button class="contact_button" onclick="displayModal()">
-          Contact me
-        </button>
-        <div class="photographer_info"></div>
+        <div class="photographer_container">
+          <div class="photographer_info"></div>
+          <button class="contact_button" onclick="displayModal()">
+            Contact me
+          </button>
+          <div class="photographer_picture"></div>
+        </div>
+      </div>
+      <div>
+        <div class="dropdown">
+          Order by
+          <button class="dropbtn" onclick="myFunction()">Dropdown
+            <i class="fa fa-caret-down"></i>
+          </button>
+          <div class="dropdown-content" id="myDropdown">
+            <a href="#">Popularity</a>
+            <a href="#">Date</a>
+            <a href="#">Title</a>
+          </div>
+        </div> 
       </div>
       <div id="photographer_gallery"></div>
     </main>
