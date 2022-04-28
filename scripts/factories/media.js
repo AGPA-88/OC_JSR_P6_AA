@@ -25,7 +25,7 @@ function mediaFactory(data) {
             const picture = `assets/media/${photographerId}/${image}`;
             
             const img = document.createElement( 'img' );
-            img.setAttribute('onclick', 'openLightbox("image", "' + picture + '", '+ index +');');
+            img.setAttribute('onclick', 'openLightbox("image", "' + picture + '", "'+ title + '", ' + index +');');
             img.setAttribute("src", picture)
             img.setAttribute("alt", title)
             gallery.appendChild(img);
