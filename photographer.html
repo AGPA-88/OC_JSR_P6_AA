@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
   <head>
     <link href="css/style.css" rel="stylesheet" type="text/css" />
     <link href="css/lightbox.css" rel="stylesheet" type="text/css" />
@@ -22,19 +22,24 @@
   </head>
   <body>
     <header>
-      <img src="assets/images/logo.png" class="logo" />
+      <a href="index.html">
+        <img alt="Fisheye Logo" src="assets/images/logo.png" class="logo"/>
+      </a>
     </header>
     <section id="lightbox">
       <div id="close_lightbox">
-        <i class="fa fa-times" aria-hidden="true"></i>
+        <i class="fa fa-times" alt="close gallery"></i>
+        <!-- <svg width="42" height="42" viewbox="0 0 42 42" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M42 4.23L37.77 0L21 16.77L4.23 0L0 4.23L16.77 21L0 37.77L4.23 42L21 25.23L37.77 42L42 37.77L25.23 21L42 4.23Z" fill="white"/>
+        </svg>           -->
       </div>
       <div id="slideshow">
         <div id="previous_media">
-          <i class="fa fa-chevron-left" aria-hidden="true"></i>
+          <i class="fa fa-chevron-left" alt="see previous media"></i>
         </div>
         <div id="media"></div>
         <div id="next_media">
-          <i class="fa fa-chevron-right" aria-hidden="true"></i>
+          <i class="fa fa-chevron-right" alt="see next media"></i>
         </div>
       </div>
       <div id="media_title"></div>
@@ -49,28 +54,51 @@
           <div class="photographer_picture"></div>
         </div>
       </div>
-      <div>
-        <div class="dropdown">
-          Order by
-          <button class="dropbtn" onclick="myFunction()">Dropdown
-            <i class="fa fa-caret-down"></i>
-          </button>
-          <div class="dropdown-content" id="myDropdown">
-            <a href="#">Popularity</a>
-            <a href="#">Date</a>
-            <a href="#">Title</a>
+      <div class="order_section">
+        <div class="sortby">
+          <strong>Sort By: </strong>
+          <div class="dropdown">
+            <div class="active">
+              <span>Popularity</span> 
+              <i class="fa fa-angle-up"></i>
+              <i class="fa fa-angle-down"></i>
+            </div>
+            <ul>
+              <li>
+                <button data-sortby="popularity">Popularity</button>
+              </li>
+              <li>
+                <button data-sortby="date">Date</button>
+              </li>
+              <li>
+                <button data-sortby="title">Title</button>
+              </li>
+            </ul>
           </div>
-        </div> 
+        </div>
       </div>
       <div id="photographer_gallery"></div>
     </main>
+    <section class="profile_tab" aria-label="overview">
+      <div id="profile_likes">
+        <div id="profile_likes_total">
+          
+        </div >
+        <div id="profile_likes_icon" alt="heart icon">
+
+        </div>
+      </div>
+      <div id="profile_price">
+        
+      </div>
+    </section>
     <div id="contact_modal">
       <div class="modal">
         <header>
-          <h2>
+          <h1>
             Contact
             <span id="contact_name"></span>
-          </h2>
+          </h1>
 
           <img src="assets/icons/close.svg" onclick="closeModal()" />
         </header>
@@ -96,10 +124,10 @@
       </div>
     </div>
     <script src="/scripts/utils/contactForm.js"></script>
-    <script src="/scripts/utils/lightbox.js"></script>
     <script src="scripts/factories/photographer.js"></script>
     <script src="scripts/pages/photographer.js"></script>
     <script src="scripts/factories/media.js"></script>
     <script src="scripts/pages/media.js"></script>
+    <script src="/scripts/utils/lightbox.js"></script>
   </body>
 </html>

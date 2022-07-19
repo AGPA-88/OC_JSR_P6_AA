@@ -4,7 +4,7 @@
 }
 #lightbox{
     display:none;
-    z-index: 10;
+    z-index: 100;
     position: fixed;
     top: 0;
     left: 0;
@@ -19,7 +19,9 @@
     right: 20px;
     left: auto;
     color: #901C1C;
+    /* background-color: #901C1C; */
     font-size: 40px;
+    cursor: pointer;
     /* font-weight: 10; */
 }
 
@@ -29,7 +31,6 @@
     align-items: center;
     height: 95%;
     width: 100%;
-    padding-right: 100px;
 }
 
 #media{
@@ -43,6 +44,7 @@
 
 #media img{
     object-fit: contain;
+    border-radius: 5px;
 }
 
 #next_media, #previous_media {
@@ -58,6 +60,8 @@
     color: #901C1C;
     font-weight: bold;
     padding: 10px;
+    display: flex;
+    justify-content: space-around;
 }
 
 #previous_media {

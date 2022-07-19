@@ -3,6 +3,10 @@
     --secondary-color: #901C1C;
 }
 
+*,*::before,*::after {
+    box-sizing: border-box;
+}
+
 #contact_modal {
     display: none;
 }
@@ -11,6 +15,7 @@
     background-color: #FAFAFA;
     /* height: 300px; */
     margin: 0 50px;
+    padding: 50px;
 }
 
 .contact_button {
@@ -22,7 +27,7 @@
     width: 170px;
     height: 70px;
     border: none;
-    background-color: #901C1C;
+    background-color: var(--secondary-color);
     border-radius: 5px;
     cursor: pointer;
     /* position: absolute; */
@@ -30,6 +35,13 @@
     /* right: 50%;
     top: 25%; */
     /* bottom: 0%; */
+
+}
+
+.contact_button:hover{
+    background-color: #DB8876;
+    color: black;
+    transition: 0.5s;
 }
 
 #contact_modal {
@@ -128,6 +140,7 @@ form textarea {
     width: 200px;
     border-radius: 50%;
     object-fit: cover;
+    box-shadow: 1px 4px 5px 1px gainsboro;
 }
 
 .photographer_info h2{
@@ -138,10 +151,14 @@ form textarea {
     font-weight: 400;
 }
 .photographer_info p{
+    color: var(--secondary-color);
     font-size: 24px;
     margin: 0;
     padding: 0;
     font-weight: 400;
+}
+.info_tagline{
+    color: black!important;
 }
 
 #photographer_gallery{
@@ -150,49 +167,92 @@ form textarea {
     justify-content: center;
     align-items: center;
     width: 100%;
+    padding-top: 50px;
 }
 
 .gallery_item{
     padding: 5px;
+    width: 500px;
+    height: 500px;
 }
 
 #photographer_gallery img, #photographer_gallery video{
-    height: 500px;
-    width: 500px;
+    height: 400px;
+    width: 400px;
     border-radius: 2%;
     object-fit: cover;
     /* object-fit: contain; */
     display: grid;
     grid-area: auto auto;
-    /* margin-top: 50px;
-    margin-right: 5px;
-    margin-left: 5px; */
-}
-#photographer_gallery h2{
-    /* display: grid;
-    grid-area: auto auto; */
-    /* padding: 25px; */
-    /* margin-right: 5px;
-    margin-left: 5px; */
 }
 
 .likes_container{
     display: flex;
 }
+.likes_container i{
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
 .media_description{
     display: flex;
-    width: 100%;
+    width: 80%;
     justify-content: space-between;
-    /* padding-right: 5px;
-    padding-left: 5px; */
+    align-items: center;
+    color:  var(--secondary-color);
+}
+
+/* USER PROFILE TAB */
+
+.order_section{
+    padding: 25px;
+    z-index: 10!important;
+}
+
+.profile_tab{
+    position: fixed;
+    bottom: 0;
+    right: 20px;
+    left: auto;
+    display: flex;
+    justify-content: space-around;
+    min-width: 300px;
+    height: 50px;
+    background-color: #DB8876;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+}
+
+#profile_likes{
+    display: flex;
+    justify-content: end;
+    align-self: center;
+    font-size: larger;
+    font-weight: bolder;
+}
+#profile_likes_icon{
+    padding-left: 5px;
+
+}
+#profile_price{
+    display: flex;
+    justify-content: end;
+    align-self: center;
+    font-size: larger;
+    font-weight: bolder;
 }
 
 /* DROPDOWN SECTION*/
+.dropdown{
+    padding-left: 20px;
+    min-width: 150px;
+}
 
 .dropdown .dropbtn {
     cursor: pointer;
-    font-size: 16px;
+    font-size: 15px;
     border: none;
+    border-radius: 5px;
     outline: none;
     color: white;
     padding: 20px;
@@ -203,23 +263,152 @@ form textarea {
 
   .dropdown-content {
     display: none;
+    border-radius: 5px;
     /* position: absolute; */
-    background-color: #f9f9f9;
+    background-color: var(--secondary-color);
     min-width: 160px;
     box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
     z-index: 1;
-    /* max-width: 100px; */
+    max-width: 100px;
+    margin-left: 50px;
   }
 
-  .dropdown-content a {
+  .dropdown-content button {
+    background-color: #901c1c;
+    border: 0;
     float: none;
-    color: black;
+    color: white;
     padding: 12px 16px;
     text-decoration: none;
     display: block;
     text-align: center;
+    cursor: pointer;
   }
 
-  .show {
+  .dropdown .dropbtn.show + .dropdown-content {
     display: block;
+  }
+
+  .sortby{
+      display: flex;
+      justify-content: space-between;
+      max-width: 250px;
+      box-sizing: border-box;
+      position: relative;
+      z-index: 8;
+
+    }
+    .sortby .active {
+        display: flex;
+        text-transform: capitalize;
+        padding-bottom: 8px;
+        
+    }
+    .sortby > div {
+        background-color: #901c1c;
+        padding: 20px;
+        border-radius: 6px;
+        color: #fff;
+        font-weight: bold;
+        max-height: 55px;
+        transition: all .3s ease;
+        position: absolute;
+        right: 0;
+        overflow: hidden;
+        cursor: pointer;
+    }
+
+    .sortby i, 
+    .sortby .open .fa-angle-down {
+        display: none;
+        /* padding-left: 20px; */
+        font-weight: bold;
+        width: 100%;
+        vertical-align: middle;
+        text-align: right;
+    }
+    .sortby .open .fa-angle-up,
+    .sortby .fa-angle-down {
+        display: inline-block;
+    }
+
+    .sortby > div.open {
+        max-height: unset;
+    }
+
+    .sortby ul {
+        margin: 0;
+        padding: 0;
+        list-style: none;
+    }
+    .sortby ul li button{
+        font-weight: bold;
+        font-size: 15px;
+    }
+
+    .sortby button {
+        border: 0;
+        background-color: #901c1c;
+        color: #fff;
+        padding: 12px 0;
+    }
+
+    .sortTxt{
+      margin-right: 20px;
+      height: 60px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+  }
+  .button_less{
+      display: none;
+      background-color: var(--secondary-color) ;
+      color: white;
+      align-items: center;
+      flex-direction: column;
+      justify-content: space-between;
+      min-width: 170px;
+      min-height: 180px;
+      border-radius: 5px;
+      font-weight: bold;
+      z-index: 1;
+  }
+  .button_less .button{
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      width: 100%;
+      height: 100%;
+  }
+  .button_title{
+    margin-left: 20px;
+    cursor: pointer;
+  }
+  .button_more{
+      display: flex;
+      min-width: 170px;
+      background-color: var(--secondary-color) ;
+      color: white;
+      justify-content: center;
+      align-items: center;
+      min-height: 60px;
+      font-weight: bold;
+      border-radius: 5px;
+      cursor: pointer;
+  }
+  .content_more {
+      display: flex;
+      width: 100%;
+      justify-content: space-between;
+      padding-left: 20px;
+      padding-right: 20px;
+  }
+  .separator{
+      height : 1px;
+      width: 80%;
+      background-color: white;
+  }
+  .less_arrow{
+      margin-right: 20px;
+      cursor: pointer;
   }
