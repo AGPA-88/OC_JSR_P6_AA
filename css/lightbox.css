@@ -22,6 +22,7 @@
     /* background-color: #901C1C; */
     font-size: 40px;
     cursor: pointer;
+    z-index: 5;
     /* font-weight: 10; */
 }
 
@@ -58,10 +59,11 @@
 
 #media_title{
     color: #901C1C;
-    font-weight: bold;
-    padding: 10px;
+    font-weight: bolder;
+    margin: 10px;
     display: flex;
     justify-content: space-around;
+    font-size: 25px;
 }
 
 #previous_media {

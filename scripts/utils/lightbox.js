@@ -33,7 +33,7 @@ function openLightbox(media, src, title, index) {
 /* Checking if the media is an image or a video. If it is an image, it will display the image. If it is
 a video, it will display the video. */
     if (media==="image"){
-        mediaBox.innerHTML = '<img src="'+ src +'">'
+        mediaBox.innerHTML = '<img src="'+ src +'" alt="'+ title +'">'
     }else{
         mediaBox.innerHTML = `
         <video controls="true" autoplay><source src="${src}" type="video/mp4" ></video>

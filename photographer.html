@@ -100,24 +100,24 @@
             <span id="contact_name"></span>
           </h1>
 
-          <img src="assets/icons/close.svg" onclick="closeModal()" />
+          <img src="assets/icons/close.svg" onclick="closeModal()" alt="close button"/>
         </header>
         <form>
           <div>
             <label>First name</label>
-            <input name="firstName" />
+            <input name="firstName" aria-label="first name"/>
           </div>
           <div>
             <label>Last name</label>
-            <input name="lastName" />
+            <input name="lastName" aria-label="last name"/>
           </div>
           <div>
             <label>Email</label>
-            <input name="email" />
+            <input name="email" aria-label="email"/>
           </div>
           <div>
             <label>Your message</label>
-            <textarea name="message"></textarea>
+            <textarea name="message" aria-label="your message"></textarea>
           </div>
           <button type="submit" class="contact_button">Send</button>
         </form>
