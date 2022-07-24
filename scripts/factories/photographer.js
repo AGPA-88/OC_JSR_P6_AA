@@ -13,7 +13,7 @@ function photographerFactory(data) {
     );
     let img = document.createElement("img");
     img.setAttribute("src", picture);
-    img.setAttribute ('aria-label', 'photographer picture');;
+    img.setAttribute ('aria-label', 'photographer picture');
     let h2 = document.createElement("h2");
     h2.textContent = name;
     let p_city = document.createElement("p");
@@ -32,6 +32,21 @@ function photographerFactory(data) {
     return article;
   }
 
+  /**
+   * It creates a new image element, sets its attributes, and appends it to the photographerPicture
+   * element. 
+   * 
+   * It then creates a new h1 element, sets its attributes, and appends it to the photographerInfo
+   * element. 
+   * 
+   * It then creates two new p elements, sets their attributes, and appends them to the
+   * photographerInfo element. 
+   * 
+   * It then sets the innerHTML of the profile_price element to the value of the price variable. 
+   * 
+   * It then returns the photographerPicture element.
+   * @returns The photographerPicture element.
+   */
   function getUserPageDOM() {
     const photographerPicture = document.querySelector('.photographer_picture');
     const photographerInfo = document.querySelector('.photographer_info');

@@ -183,7 +183,6 @@ form textarea {
     object-fit: cover;
     /* object-fit: contain; */
     display: grid;
-    grid-area: auto auto;
 }
 
 .likes_container{
