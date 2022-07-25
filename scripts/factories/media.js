@@ -26,6 +26,7 @@ function mediaFactory(data) {
             vid.setAttribute("aria-label", "Video name" + title);
             vidSrc.setAttribute("src", vidPath);
             vidSrc.setAttribute("type", "video/mp4");
+            vid.setAttribute ('tabindex', 4+index);
 
             vid.appendChild(vidSrc);
             gallery.appendChild(vid);
@@ -39,6 +40,12 @@ function mediaFactory(data) {
             img.setAttribute("src", picture)
             img.setAttribute("alt", "Picture name " + title)
             img.setAttribute ( 'aria-labelledby', 'media_id_' + id);
+            img.setAttribute ('tabindex', 4+index);
+            img.addEventListener('keypress', function (e) {
+                if (e.key === 'Enter') {
+                  e.target.click();
+                }
+            });
             gallery.appendChild(img);
         }
 

@@ -50,6 +50,7 @@ a video, it will display the video. */
 function closeLightbox() {
     lightboxElement.style.display = "none";
     document.body.classList.remove('lightbox-open');
+    window.removeEventListener("keydown",navigationGallery);
 }
 
 /**

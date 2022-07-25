@@ -4,6 +4,8 @@
 function displayModal() {
   const modal = document.getElementById("contact_modal");
   modal.style.display = "flex";
+  window.addEventListener('keydown', modalNavigation);
+  document.querySelector("[name='firstName']").focus();
 }
 
 /**
@@ -27,7 +29,16 @@ form.addEventListener("submit", (e) => {
 
   let data = {};
   for (const [key, value] of formData.entries()) {
-    data = { ...data, [key]: value };
+    data = { data, [key]: value };
   }
+  document.querySelectorAll("input").forEach(input => input.value = "");
+  document.querySelectorAll("textarea").forEach(textarea => textarea.value = "");
   console.log(data);
+  closeModal();
 });
+
+function modalNavigation(event){
+  if(event.keyCode === 27){
+  closeModal();
+  }
+}
