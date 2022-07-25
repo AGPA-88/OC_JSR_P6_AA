@@ -27,22 +27,19 @@
       </a>
     </header>
     <section id="lightbox">
-      <div id="close_lightbox">
-        <i class="fa fa-times" alt="close gallery"></i>
-        <!-- <svg width="42" height="42" viewbox="0 0 42 42" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <path d="M42 4.23L37.77 0L21 16.77L4.23 0L0 4.23L16.77 21L0 37.77L4.23 42L21 25.23L37.77 42L42 37.77L25.23 21L42 4.23Z" fill="white"/>
-        </svg>           -->
+      <div id="close_lightbox" aria-label="close gallery" role="button">
+        <i class="fa fa-times"></i>
       </div>
       <div id="slideshow">
-        <div id="previous_media">
-          <i class="fa fa-chevron-left" alt="see previous media"></i>
+        <div id="previous_media" aria-label="see previous media" role="button">
+          <i class="fa fa-chevron-left"></i>
         </div>
         <div id="media"></div>
-        <div id="next_media">
-          <i class="fa fa-chevron-right" alt="see next media"></i>
+        <div id="next_media" aria-label="see next media" role="button">
+          <i class="fa fa-chevron-right"></i>
         </div>
       </div>
-      <div id="media_title"></div>
+      <h2 id="media_title"></h2>
     </section>
     <main id="main">
       <div class="photograph-header">
@@ -84,7 +81,7 @@
         <div id="profile_likes_total">
           
         </div >
-        <div id="profile_likes_icon" alt="heart icon">
+        <div id="profile_likes_icon" aria-label="heart icon" role="button">
 
         </div>
       </div>
